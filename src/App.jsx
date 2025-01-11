@@ -23,7 +23,9 @@ function App() {
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [pending, setPending] = useState(false);
   const [productCount, setProductCount] = useState(0);
-  
+
+  const [deleteMode, setDeleteMode] = useState(true)
+
 
 
 
@@ -93,13 +95,20 @@ function App() {
   const AddToFav = (item) => {
     if (!favoriteItems.find((fav) => fav.id === item.id)) {
       const updatedItem = [...favoriteItems, item]
-      setFavouriteItems(updatedItem)
-    
+      setFavouriteItems(updatedItem);
+
+
     }
-  
+
+    setDeleteMode(false)
+
   }
 
-
+  const RemoveFromFav = (item) => {
+    const newFavourite = favoriteItems.filter((favoriteItems) => favoriteItems != item);
+    setFavouriteItems(newFavourite)
+    setDeleteMode(true)
+  }
 
   useEffect(() => {
     setProductCount(favoriteItems.length)
@@ -155,12 +164,23 @@ function App() {
                 <div className='w-full flex items-center justify-center h-1/3'>
 
                   
-                      <button onClick={() => AddToFav(item)} className=' h-12 w-1/2 rounded-lg bg-gray-900 text-gray-100 font-bold mt-2' type="button">
-                        Add to Favourite
-                      </button> 
 
-                   
-
+                  
+                
+                        {
+                          !favoriteItems.find(fav => fav.id === item.id) ? 
+                         (
+                            <button onClick={() => AddToFav(item)} className=' h-12 w-1/2 rounded-lg bg-gray-900 text-gray-100 font-bold mt-2' type="button">
+                              Add to Favourite
+                            </button>
+                          ) : (
+                            <button onClick={() => RemoveFromFav(item)} className=' h-12 w-1/2 rounded-lg bg-gray-900 text-gray-100 font-bold mt-2' type="button">
+                              Delete Favourite
+                            </button>
+                          )
+                        }
+               
+                      
                 </div>
               </div>
             </div>
