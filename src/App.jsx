@@ -102,8 +102,8 @@ function App() {
   }
 
   const RemoveFromFav = (item) => {
-    const newFavourite = favoriteItems.filter((favoriteItems) => favoriteItems != item);
-    setFavouriteItems(newFavourite)
+    const newFavourite = favoriteItems.filter((favoriteItems) => favoriteItems.id !== item.id);
+    setFavouriteItems(newFavourite);
     localStorage.setItem("favourite", JSON.stringify(newFavourite))
     setDeleteMode(true)
   }
