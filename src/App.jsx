@@ -8,12 +8,10 @@ import DescriptionMsg from './components/overlayDescription';
 
 
 function App() {
-  localStorage.removeItem('displayItem');
-  localStorage.removeItem('fav')
+
   const [itemsData, setItemsData] = useState([]);
   const [favoriteItems, setFavouriteItems] = useState(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem("favourite")) || [];
-    return storedFavorites;
+           return JSON.parse(localStorage.getItem("favourite")) || [];
   });
 
   const [displayItem, setdisplayItem] = useState(() => {
@@ -24,7 +22,8 @@ function App() {
   const [pending, setPending] = useState(false);
   const [productCount, setProductCount] = useState(0);
 
-  const [deleteMode, setDeleteMode] = useState(true)
+  const [deleteMode, setDeleteMode] = useState(true);
+  console.log(deleteMode)
 
 
 
@@ -56,9 +55,6 @@ function App() {
 
 
 
-  useEffect(() => {
-    localStorage.setItem("favoriteItems", JSON.stringify(favoriteItems));
-  }, [favoriteItems]);
 
 
   useEffect(() => {
@@ -96,6 +92,7 @@ function App() {
     if (!favoriteItems.find((fav) => fav.id === item.id)) {
       const updatedItem = [...favoriteItems, item]
       setFavouriteItems(updatedItem);
+      localStorage.setItem("favourite", JSON.stringify(updatedItem))
 
 
     }
@@ -107,6 +104,7 @@ function App() {
   const RemoveFromFav = (item) => {
     const newFavourite = favoriteItems.filter((favoriteItems) => favoriteItems != item);
     setFavouriteItems(newFavourite)
+    localStorage.setItem("favourite", JSON.stringify(newFavourite))
     setDeleteMode(true)
   }
 
