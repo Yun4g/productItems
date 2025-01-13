@@ -60,26 +60,23 @@ function App() {
   useEffect(() => {
 
     const products = async () => {
-
       try {
-
-        setPending(true)
+        setPending(true);
         const response = await fetch('https://fakestoreapi.com/products');
-        const result = await response.json()
-
-        if (result.ok) {
-          setPending(false)
-
-        } else {
-          setPending(false)
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
+        
+        const result = await response.json();
         setItemsData(result);
       } catch (error) {
-        console.log(error)
+        console.error(error);
+      } finally {
+        setPending(false);
       }
-
-
-    }
+    };
+    
 
     products();
   }, [])
@@ -199,7 +196,7 @@ function App() {
               <i className="fa-solid fa-x cursor-pointer text-gray-700"></i>
             </div>
           </div>
-          <FavouriteItemSection favoriteItems={favoriteItems} />
+          <FavouriteItemSection favoriteItems={favoriteItems} handleclick={RemoveFromFav}  />
         </section>
       </aside>
 

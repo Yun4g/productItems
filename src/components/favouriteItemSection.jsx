@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 
 
-export default function FavouriteItemSection({ favoriteItems}) {
+export default function FavouriteItemSection({ favoriteItems, handleclick}) {
     
     return (
         <section className="rounded-2xl pb-4 mt-4 mb-4">
@@ -18,8 +20,12 @@ export default function FavouriteItemSection({ favoriteItems}) {
                             <p className="text-white">Price: ${savedFav.price}</p>
                             <p className="text-white">rating:  {savedFav.rating.rate} </p>
                         </div>
+                        <button onClick={()=> handleclick(savedFav)}>
+                        <FontAwesomeIcon icon={faTrashCan} color='white' />
+
+                        </button>
                         </div>
-                      
+                        
                     </div>
                 ))}
 
@@ -38,5 +44,6 @@ FavouriteItemSection.propTypes = {
            rating: PropTypes.shape({
                    rate: PropTypes.number.isRequired, // Fixed nested structure
     }).isRequired, }) ).isRequired,
-    descriptive: PropTypes.func.isRequired
+    descriptive: PropTypes.func.isRequired,
+    handleclick : PropTypes.func.isRequired
 };
