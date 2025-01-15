@@ -73,7 +73,7 @@ function Details({favoriteItems, setFavouriteItems}) {
                  (
                   <div className=' w-full  '>
                       <button onClick={() => AddToFav(item)} className=' h-12  w-80  rounded-lg bg-gray-900 text-gray-100 font-bold mt-2' type="button">
-                      Add to Fav
+                      Add to Favourite
                     </button>
                     
                   </div>
