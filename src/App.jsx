@@ -66,7 +66,7 @@ function App() {
           {/* Route for item details page */}
           <Route 
             path='/item/:id' 
-            element={<Details />} 
+            element={<Details favoriteItems={favoriteItems} setFavouriteItems={setFavouriteItems} />} 
           />
        
         </Routes>

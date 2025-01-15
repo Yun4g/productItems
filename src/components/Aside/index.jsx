@@ -19,8 +19,7 @@ function Aside({setdisplayItem, displayItem,  setFavouriteItems, favoriteItems, 
     setDeleteMode(true)
   }
 
-    return(
-        
+    return(       
             <aside className={`border-2 w-full sm:w-1/2 h-full md:w-2/5 lg:w-1/4 z-40 fixed top-0 right-0 backdrop-blur-sm bg-white/30 p-2 md:p-6 overflow-y-scroll transition-transform duration-300 ease-in-out ${displayItem ? 'translate-x-0' : 'translate-x-full'}`}>
               <section className=' h-[400px]'>
                 <div className='flex justify-between items-center'>
