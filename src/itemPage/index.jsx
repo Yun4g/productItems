@@ -43,7 +43,7 @@ function Details() {
             <img src={item.image} className=" mt-7 w-80 object-contain" alt={item.title} />
             <p className=" mt-8 mb-4 text-xl font-bold text-orange-800">Price: ${item.price}</p>
             <p className=" mb-4 text-xl font-bold text-orange-800">Rating: {item.rating.rate} ({item.rating.count} reviews)</p> 
-            <p className=" text-lg text-slate-700 w-96">{item.description}</p>
+            <p className=" text-base md:text-lg text-slate-700 w-[270px] md:w-96">{item.description}</p>
             
       
         </div>
