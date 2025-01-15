@@ -60,7 +60,7 @@ function Details({favoriteItems, setFavouriteItems}) {
     }
 
     return (
-        <div className="item-details p-3 text-center w-full border flex flex-col justify-center items-center ">
+        <div className="item-details p-3 text-center w-full  flex flex-col justify-center items-center ">
                   <Link to={'/'} className=" border-b-2 border-amber-900 text-orange-800 mb-6"> Go Back to Home </Link>
             <h1 className=" text-2xl font-serif font-bold ">{item.title}</h1>
             <img src={item.image} className=" mt-7 w-80 object-contain" alt={item.title} />
